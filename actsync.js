@@ -8,5 +8,10 @@ fs.readFile('file.txt', (err, buffer) => {
     }
     console.log(buffer.length);
     let src = buffer.toString();
-    console.log(src);
+    let data = src.split('\n').filter(line => line);
+    
+    fs.writeFile('result.txt', data, err => {
+        if (err) console.log(err);
+        console.log("We create a new content. Check this out");
+    });
 })
